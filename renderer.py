@@ -1,5 +1,6 @@
 import pygame
 from threading import Thread
+size=int(input("input size: "))
 class rendered():
     def __init__(self,color,pos,radious) -> None:
         self.color=color
@@ -15,7 +16,7 @@ class enemy(rendered):
         self.damage=damage
 
 player=False
-screen = pygame.display.set_mode((800,800))
+screen = pygame.display.set_mode((size,size))
 ren=[]
 enemies=[]
 cl =pygame.time.Clock()
@@ -41,12 +42,12 @@ def loop():
                 pygame.quit()
         screen.fill((24, 119, 9))
         for i in range(40): 
-            pygame.draw.rect(screen,(0,0,0),(i*20,0,1,800))
+            pygame.draw.rect(screen,(0,0,0),(i*(size/40),0,1,800))
         for i in range(40): 
-            pygame.draw.rect(screen,(0,0,0),(0,i*20,800,1))
+            pygame.draw.rect(screen,(0,0,0),(0,i*(size/40),800,1))
         for i in ren:
-            pygame.draw.circle(screen,i.color,(i.pos[0]*10,i.pos[1]*10),i.rad)
+            pygame.draw.circle(screen,i.color,(i.pos[0]*(size/80),i.pos[1]*(size/80)),i.rad)
         for i in enemies:
-            pygame.draw.circle(screen,i.color,(i.pos[0]*10,i.pos[1]*10),i.rad)
+            pygame.draw.circle(screen,i.color,(i.pos[0]*(size/80),i.pos[1]*(size/80)),i.rad)
         pygame.display.update()
 Thread(target=loop).start()

@@ -38,10 +38,10 @@ def controler():
                 if renderer.player.hp <=0:
                     renderer.enemies.pop(renderer.enemies.index(renderer.player))
 
-lvl_loader.load(input("input lvl"))
+lvl_loader.load(input("input lvl: "))
 
 
-renderer.player =renderer.enemy((0,0,255),(9,9),9,20,1)
+renderer.player =renderer.enemy((0,0,255),(9,9),renderer.size/80,20,1)
 renderer.enemies.append(renderer.player)
 
 renderer.Thread(target=controler).start()

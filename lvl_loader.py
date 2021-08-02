@@ -7,4 +7,4 @@ def load(file_name:str):
         assets=i.split(" ")
         if assets[0]=="enemy":
             print(assets)
-            renderer.enemies.append(renderer.enemy((255,0,0),(int(assets[1]),int(assets[2])),int(assets[3]),int(assets[4]),int(assets[5])))
+            renderer.enemies.append(renderer.enemy((255,0,0),(int(assets[1]),int(assets[2])),renderer.size/80,int(assets[3]),int(assets[4])))

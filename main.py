@@ -1,4 +1,9 @@
 import renderer,lvl_loader
+mul=input("multiplayer?(y/n)")
+online=False
+if mul=="y":
+    import network
+    online=True  
 def controler():
     target = None
     inp=""
@@ -15,6 +20,8 @@ def controler():
                 renderer.player.move((-2,0))
             if arg1 == "right":
                 renderer.player.move((2,0))
+            if online:
+                network.client.send(f"p:{renderer.player.pos}:{network.id}".encode())
         if command == "attack":
             if arg1 == "up":
                 target=renderer.get_enemy_from_pos((renderer.player.pos[0],renderer.player.pos[1]-2))

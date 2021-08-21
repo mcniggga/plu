@@ -3,12 +3,13 @@ import socket
 from threading import Thread
 from time import sleep
 import renderer
+
+
+
 client=socket.socket()
-client.connect((input("input server ip"),117))
+client.connect((input("input server ip"),120))
 sleep(5)
-
 id=None
-
 def keeper():
     while True:
         sleep(5)
@@ -28,6 +29,5 @@ def receive(server):
                     renderer.ren.append(renderer.rendered((0,0,255),eval(msg[1]),renderer.size/80))
         except:
             pass
-
 Thread(target=keeper).start()
 Thread(target=receive,args=(client,)).start()

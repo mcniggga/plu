@@ -39,6 +39,8 @@ def loop():
         cl.tick(30)
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
+                import network
+                network.client.send("quit".encode())
                 pygame.quit()
         screen.fill((24, 119, 9))
         for i in range(40): 
